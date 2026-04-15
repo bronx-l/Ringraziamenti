@@ -236,9 +236,70 @@
       .card { padding:24px;border-radius:26px; }
       .footer { flex-direction:column;align-items:flex-start;gap:6px; }
     }
+
+    /* ── Close button ────────────────────────────── */
+    .close-btn {
+      position: fixed;
+      top: 20px; right: 20px;
+      z-index: 50;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--stroke);
+      background: var(--card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--muted);
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transition: transform .15s, background .15s, color .15s;
+      animation: fadeIn .5s ease both;
+    }
+    .close-btn:hover {
+      transform: scale(1.1);
+      background: var(--panel);
+      color: var(--text);
+    }
+    .close-btn:active { transform: scale(0.95); }
+
+    /* Toast fallback */
+    .toast {
+      position: fixed;
+      bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
+      z-index: 60;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--text);
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 12px 20px;
+      border-radius: 100px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s ease, transform .3s ease;
+      white-space: nowrap;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Close button -->
+  <button class="close-btn" onclick="closePage()" aria-label="Chiudi">✕</button>
+  <div class="toast" id="toast">Chiudi manualmente questa scheda 👆</div>
+
   <div class="orb one"></div>
   <div class="orb two"></div>
   <div class="orb three"></div>
@@ -287,7 +348,6 @@
       </div>
     </section>
   </main>
-
   <script>
     // =============================================
     // MODIFICA QUI: nomi in minuscolo → link
@@ -317,6 +377,22 @@
         errore.style.animation = 'shake .36s ease';
       }
     }
+  
+
+    // ── Close button ─────────────────────────────
+    function closePage() {
+      window.close();
+      // Fallback: if window.close() didn't work (most mobile browsers),
+      // show a toast after 300ms
+      setTimeout(function () {
+        if (!document.hidden) {
+          const toast = document.getElementById('toast');
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 3500);
+        }
+      }, 300);
+    }
+  
   </script>
 </body>
 </html>
