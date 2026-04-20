@@ -99,7 +99,6 @@
     }
     button:hover { transform:translateY(-1px);box-shadow:var(--btn-shadow-h),inset 0 1px 0 rgba(255,255,255,0.22); }
     button:active { transform:translateY(0); }
-    .hint { font-size:0.82rem;color:var(--hint);text-align:center; }
     .error {
       display:none;margin-top:12px;border-radius:16px;padding:12px 14px;
       font-size:0.88rem;line-height:1.45;color:var(--error-text);
@@ -217,6 +216,12 @@
 
     const FALLBACK = "https://bronx-l.github.io/Ringraziamenti/grazie_animato.html";
 
+    function resetUI() {
+      document.getElementById('overlay').classList.remove('show');
+      document.getElementById('nome').value = '';
+      document.getElementById('errore').style.display = 'none';
+    }
+
     function showError(msg) {
       const el = document.getElementById('errore');
       el.textContent = msg;
@@ -227,8 +232,8 @@
     }
 
     function vai() {
-      const input  = document.getElementById('nome').value.trim().toLowerCase();
-      const errore = document.getElementById('errore');
+      const input   = document.getElementById('nome').value.trim().toLowerCase();
+      const errore  = document.getElementById('errore');
       const overlay = document.getElementById('overlay');
       errore.style.display = 'none';
 
@@ -239,7 +244,9 @@
 
       const dest = links[input] || FALLBACK;
       overlay.classList.add('show');
-      setTimeout(() => { window.location.href = dest; }, 700);
+
+      // replace() evita che la pagina entri nella cronologia → no overlay al tasto indietro
+      setTimeout(() => { window.location.replace(dest); }, 700);
     }
 
     function closePage() {
@@ -253,12 +260,11 @@
       }, 300);
     }
 
-    // Resetta overlay quando si torna indietro
-    window.addEventListener('pageshow', function() {
-      document.getElementById('overlay').classList.remove('show');
-      document.getElementById('nome').value = '';
-      document.getElementById('errore').style.display = 'none';
-    });
+    // Reset overlay tasto indietro (tutti i browser)
+    window.addEventListener('pageshow', resetUI);
+
+    // Fallback extra per Safari iOS
+    window.addEventListener('focus', resetUI);
   </script>
 </body>
 </html>
