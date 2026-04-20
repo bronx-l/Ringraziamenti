@@ -6,170 +6,82 @@
   <title>Ringraziamenti – Tesi di Laurea</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* ── LIGHT: bianco + verdone ─────────────────── */
     :root {
-      --bg-a: #f5f8f5;
-      --bg-b: #eaf0ea;
-      --orb1: rgba(255,255,255,0.92);
-      --orb2: rgba(74,124,74,0.14);
-      --orb3: rgba(139,195,74,0.10);
+      --bg-a: #f5f8f5; --bg-b: #eaf0ea;
+      --orb1: rgba(255,255,255,0.92); --orb2: rgba(74,124,74,0.14); --orb3: rgba(139,195,74,0.10);
       --card: rgba(255,255,255,0.72);
       --card-before: linear-gradient(180deg,rgba(255,255,255,0.52),rgba(255,255,255,0.14));
-      --stroke: rgba(255,255,255,0.80);
-      --panel: rgba(255,255,255,0.55);
-      --panel-stroke: rgba(255,255,255,0.88);
-      --input-bg: rgba(255,255,255,0.88);
-      --input-bg-focus: rgba(255,255,255,0.98);
-      --input-ring: rgba(180,210,180,0.70);
-      --input-ring-focus: rgba(56,112,56,0.65);
-      --input-glow: rgba(56,112,56,0.10);
-      --shadow: 0 24px 60px rgba(20,50,20,0.11);
-      --text: #0f1a0f;
-      --muted: rgba(15,26,15,0.56);
-      --label: rgba(40,70,40,0.72);
-      --hint: rgba(40,70,40,0.50);
-      --footer: rgba(40,70,40,0.50);
-      --pill-bg: rgba(255,255,255,0.78);
-      --pill-stroke: rgba(255,255,255,0.92);
-      --pill-text: #2d5a2d;
-      --dot: rgba(80,130,80,0.28);
-      --accent: #2e7d32;
-      --accent2: #4caf50;
-      --btn-text: #ffffff;
-      --btn-shadow: 0 14px 28px rgba(46,125,50,0.28);
-      --btn-shadow-h: 0 18px 32px rgba(46,125,50,0.36);
-      --error-bg: rgba(255,255,255,0.76);
-      --error-ring: rgba(239,83,80,0.28);
-      --error-text: #c62828;
-      --overlay-bg: rgba(245,248,245,0.55);
-      --sheet-bg: rgba(255,255,255,0.80);
-      --eyebrow: #2e7d32;
+      --stroke: rgba(255,255,255,0.80); --panel: rgba(255,255,255,0.55); --panel-stroke: rgba(255,255,255,0.88);
+      --input-bg: rgba(255,255,255,0.88); --input-bg-focus: rgba(255,255,255,0.98);
+      --input-ring: rgba(180,210,180,0.70); --input-ring-focus: rgba(56,112,56,0.65); --input-glow: rgba(56,112,56,0.10);
+      --shadow: 0 24px 60px rgba(20,50,20,0.11); --text: #0f1a0f; --muted: rgba(15,26,15,0.56);
+      --label: rgba(40,70,40,0.72); --hint: rgba(40,70,40,0.50); --footer: rgba(40,70,40,0.50);
+      --pill-bg: rgba(255,255,255,0.78); --pill-stroke: rgba(255,255,255,0.92); --pill-text: #2d5a2d;
+      --dot: rgba(80,130,80,0.28); --accent: #2e7d32; --accent2: #4caf50; --btn-text: #ffffff;
+      --btn-shadow: 0 14px 28px rgba(46,125,50,0.28); --btn-shadow-h: 0 18px 32px rgba(46,125,50,0.36);
+      --error-bg: rgba(255,255,255,0.76); --error-ring: rgba(239,83,80,0.28); --error-text: #c62828;
+      --overlay-bg: rgba(245,248,245,0.55); --sheet-bg: rgba(255,255,255,0.80); --eyebrow: #2e7d32;
     }
-
-    /* ── DARK: nero + verdone ────────────────────── */
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg-a: #060a06;
-        --bg-b: #0b110b;
-        --orb1: rgba(46,125,50,0.08);
-        --orb2: rgba(76,175,80,0.07);
-        --orb3: rgba(139,195,74,0.05);
+        --bg-a: #060a06; --bg-b: #0b110b;
+        --orb1: rgba(46,125,50,0.08); --orb2: rgba(76,175,80,0.07); --orb3: rgba(139,195,74,0.05);
         --card: rgba(255,255,255,0.045);
         --card-before: linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.015));
-        --stroke: rgba(76,175,80,0.12);
-        --panel: rgba(76,175,80,0.04);
-        --panel-stroke: rgba(76,175,80,0.10);
-        --input-bg: rgba(255,255,255,0.055);
-        --input-bg-focus: rgba(255,255,255,0.085);
-        --input-ring: rgba(76,175,80,0.18);
-        --input-ring-focus: rgba(76,175,80,0.60);
-        --input-glow: rgba(76,175,80,0.08);
-        --shadow: 0 24px 60px rgba(0,0,0,0.60);
-        --text: #e8f5e8;
-        --muted: rgba(232,245,232,0.50);
-        --label: rgba(185,225,185,0.60);
-        --hint: rgba(185,225,185,0.42);
-        --footer: rgba(185,225,185,0.38);
-        --pill-bg: rgba(76,175,80,0.10);
-        --pill-stroke: rgba(76,175,80,0.18);
-        --pill-text: rgba(185,240,185,0.80);
-        --dot: rgba(76,175,80,0.20);
-        --accent: #66bb6a;
-        --accent2: #a5d6a7;
-        --btn-text: #0a1a0a;
-        --btn-shadow: 0 14px 28px rgba(102,187,106,0.20);
-        --btn-shadow-h: 0 18px 32px rgba(102,187,106,0.28);
-        --error-bg: rgba(255,255,255,0.04);
-        --error-ring: rgba(239,83,80,0.20);
-        --error-text: #ef9a9a;
-        --overlay-bg: rgba(6,10,6,0.65);
-        --sheet-bg: rgba(14,22,14,0.82);
-        --eyebrow: #81c784;
+        --stroke: rgba(76,175,80,0.12); --panel: rgba(76,175,80,0.04); --panel-stroke: rgba(76,175,80,0.10);
+        --input-bg: rgba(255,255,255,0.055); --input-bg-focus: rgba(255,255,255,0.085);
+        --input-ring: rgba(76,175,80,0.18); --input-ring-focus: rgba(76,175,80,0.60); --input-glow: rgba(76,175,80,0.08);
+        --shadow: 0 24px 60px rgba(0,0,0,0.60); --text: #e8f5e8; --muted: rgba(232,245,232,0.50);
+        --label: rgba(185,225,185,0.60); --hint: rgba(185,225,185,0.42); --footer: rgba(185,225,185,0.38);
+        --pill-bg: rgba(76,175,80,0.10); --pill-stroke: rgba(76,175,80,0.18); --pill-text: rgba(185,240,185,0.80);
+        --dot: rgba(76,175,80,0.20); --accent: #66bb6a; --accent2: #a5d6a7; --btn-text: #0a1a0a;
+        --btn-shadow: 0 14px 28px rgba(102,187,106,0.20); --btn-shadow-h: 0 18px 32px rgba(102,187,106,0.28);
+        --error-bg: rgba(255,255,255,0.04); --error-ring: rgba(239,83,80,0.20); --error-text: #ef9a9a;
+        --overlay-bg: rgba(6,10,6,0.65); --sheet-bg: rgba(14,22,14,0.82); --eyebrow: #81c784;
       }
     }
-
     body {
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      padding:24px;
+      min-height:100vh; display:grid; place-items:center; padding:24px;
       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif;
       color:var(--text);
-      background:
-        radial-gradient(circle at 20% 20%, var(--orb1), transparent 30%),
-        radial-gradient(circle at 80% 15%, var(--orb2), transparent 26%),
-        radial-gradient(circle at 72% 80%, var(--orb3), transparent 25%),
-        linear-gradient(180deg, var(--bg-a), var(--bg-b));
+      background: radial-gradient(circle at 20% 20%, var(--orb1), transparent 30%),
+                  radial-gradient(circle at 80% 15%, var(--orb2), transparent 26%),
+                  radial-gradient(circle at 72% 80%, var(--orb3), transparent 25%),
+                  linear-gradient(180deg, var(--bg-a), var(--bg-b));
       overflow:hidden;
     }
-
-    .orb {
-      position:fixed;border-radius:999px;filter:blur(22px);
-      pointer-events:none;animation:drift 14s ease-in-out infinite;z-index:0;
-    }
+    .orb { position:fixed;border-radius:999px;filter:blur(22px);pointer-events:none;animation:drift 14s ease-in-out infinite;z-index:0; }
     .orb.one   { width:220px;height:220px;background:var(--orb1);top:8%;left:10%; }
     .orb.two   { width:280px;height:280px;background:var(--orb2);right:8%;top:12%;animation-delay:-4s; }
     .orb.three { width:240px;height:240px;background:var(--orb3);left:14%;bottom:7%;animation-delay:-8s; }
-
-    @keyframes drift {
-      0%,100% { transform:translate3d(0,0,0) scale(1); }
-      50%     { transform:translate3d(0,18px,0) scale(1.04); }
-    }
-
+    @keyframes drift { 0%,100%{transform:translate3d(0,0,0) scale(1)} 50%{transform:translate3d(0,18px,0) scale(1.04)} }
     .shell { width:100%;max-width:520px;position:relative;z-index:1; }
-
     .card {
-      position:relative;overflow:hidden;
-      border-radius:30px;
-      background:var(--card);
-      border:1px solid var(--stroke);
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(32px) saturate(160%);
-      -webkit-backdrop-filter:blur(32px) saturate(160%);
-      padding:34px;
-      animation:rise 0.75s cubic-bezier(.2,.9,.2,1) both;
+      position:relative;overflow:hidden;border-radius:30px;background:var(--card);
+      border:1px solid var(--stroke);box-shadow:var(--shadow);
+      backdrop-filter:blur(32px) saturate(160%);-webkit-backdrop-filter:blur(32px) saturate(160%);
+      padding:34px;animation:rise 0.75s cubic-bezier(.2,.9,.2,1) both;
     }
-    .card::before {
-      content:"";position:absolute;inset:0;
-      background:var(--card-before);pointer-events:none;
-    }
-
-    .topbar {
-      position:relative;display:flex;
-      justify-content:space-between;align-items:center;margin-bottom:22px;
-    }
+    .card::before { content:"";position:absolute;inset:0;background:var(--card-before);pointer-events:none; }
+    .topbar { position:relative;display:flex;justify-content:space-between;align-items:center;margin-bottom:22px; }
     .pill {
-      display:inline-flex;align-items:center;gap:8px;
-      padding:8px 14px;border-radius:999px;
+      display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;
       background:var(--pill-bg);border:1px solid var(--pill-stroke);
       color:var(--pill-text);font-size:0.76rem;font-weight:600;letter-spacing:0.01em;
     }
     .dot-group { display:flex;gap:8px; }
     .dot { width:10px;height:10px;border-radius:50%;background:var(--dot); }
-
     .hero { padding:10px 0 24px; }
     .eyebrow { font-size:0.84rem;color:var(--eyebrow);font-weight:600;margin-bottom:10px; }
-    h1 {
-      font-size:clamp(2rem,5vw,2.7rem);line-height:1.04;
-      letter-spacing:-0.045em;font-weight:700;margin-bottom:14px;max-width:10ch;
-    }
+    h1 { font-size:clamp(2rem,5vw,2.7rem);line-height:1.04;letter-spacing:-0.045em;font-weight:700;margin-bottom:14px;max-width:10ch; }
     .subtitle { font-size:1rem;line-height:1.62;color:var(--muted);max-width:40ch; }
-
-    .panel {
-      position:relative;margin-top:24px;padding:16px;
-      border-radius:24px;background:var(--panel);border:1px solid var(--panel-stroke);
-    }
+    .panel { position:relative;margin-top:24px;padding:16px;border-radius:24px;background:var(--panel);border:1px solid var(--panel-stroke); }
     .label { display:block;font-size:0.82rem;font-weight:600;color:var(--label);margin-bottom:10px;padding-left:4px; }
-
     .field { position:relative; }
     input {
-      width:100%;border:none;outline:none;border-radius:18px;
-      padding:18px 18px 18px 52px;
-      background:var(--input-bg);color:var(--text);
-      font-size:1rem;font-family:inherit;
-      box-shadow:inset 0 0 0 1px var(--input-ring);
-      transition:box-shadow .2s, transform .2s, background .2s;
+      width:100%;border:none;outline:none;border-radius:18px;padding:18px 18px 18px 52px;
+      background:var(--input-bg);color:var(--text);font-size:1rem;font-family:inherit;
+      box-shadow:inset 0 0 0 1px var(--input-ring);transition:box-shadow .2s, transform .2s, background .2s;
     }
     input::placeholder { color:var(--hint); }
     input:focus {
@@ -178,125 +90,71 @@
       transform:translateY(-1px);
     }
     .icon { position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:1rem;color:var(--hint);pointer-events:none; }
-
     .button-wrap { display:grid;gap:10px;margin-top:14px; }
     button {
-      border:none;outline:none;cursor:pointer;border-radius:18px;
-      padding:16px 18px;width:100%;font:inherit;
-      font-size:0.98rem;font-weight:700;letter-spacing:-0.01em;
-      color:var(--btn-text);
+      border:none;outline:none;cursor:pointer;border-radius:18px;padding:16px 18px;width:100%;font:inherit;
+      font-size:0.98rem;font-weight:700;letter-spacing:-0.01em;color:var(--btn-text);
       background:linear-gradient(180deg, var(--accent2), var(--accent));
-      box-shadow:var(--btn-shadow), inset 0 1px 0 rgba(255,255,255,0.22);
-      transition:transform .18s, box-shadow .18s;
+      box-shadow:var(--btn-shadow), inset 0 1px 0 rgba(255,255,255,0.22);transition:transform .18s, box-shadow .18s;
     }
     button:hover { transform:translateY(-1px);box-shadow:var(--btn-shadow-h),inset 0 1px 0 rgba(255,255,255,0.22); }
     button:active { transform:translateY(0); }
-
     .hint { font-size:0.82rem;color:var(--hint);text-align:center; }
-
     .error {
       display:none;margin-top:12px;border-radius:16px;padding:12px 14px;
-      font-size:0.88rem;line-height:1.45;
-      color:var(--error-text);background:var(--error-bg);
-      box-shadow:inset 0 0 0 1px var(--error-ring);
-      animation:shake .36s ease;
+      font-size:0.88rem;line-height:1.45;color:var(--error-text);
+      background:var(--error-bg);box-shadow:inset 0 0 0 1px var(--error-ring);
     }
-
     .footer {
       position:relative;display:flex;justify-content:space-between;
       align-items:center;margin-top:22px;color:var(--footer);font-size:0.82rem;
     }
     .footer strong { font-weight:600;color:var(--text); }
-
     .overlay {
       position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
-      background:var(--overlay-bg);
-      backdrop-filter:blur(20px) saturate(140%);
-      -webkit-backdrop-filter:blur(20px) saturate(140%);
-      z-index:10;opacity:0;pointer-events:none;transition:opacity .3s;
+      background:var(--overlay-bg);backdrop-filter:blur(20px) saturate(140%);
+      -webkit-backdrop-filter:blur(20px) saturate(140%);z-index:10;opacity:0;pointer-events:none;transition:opacity .3s;
     }
     .overlay.show { opacity:1;pointer-events:all; }
     .sheet {
-      background:var(--sheet-bg);border:1px solid var(--stroke);
-      border-radius:24px;box-shadow:0 20px 50px rgba(0,0,0,0.18);
-      padding:22px 26px;text-align:center;min-width:250px;
+      background:var(--sheet-bg);border:1px solid var(--stroke);border-radius:24px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.18);padding:22px 26px;text-align:center;min-width:250px;
     }
     .spinner {
       width:28px;height:28px;margin:0 auto 14px;border-radius:50%;
-      border:2.8px solid rgba(76,175,80,0.18);border-top-color:var(--accent);
-      animation:spin .9s linear infinite;
+      border:2.8px solid rgba(76,175,80,0.18);border-top-color:var(--accent);animation:spin .9s linear infinite;
     }
     .sheet p { color:var(--muted);font-size:0.95rem;font-weight:500; }
-
     @keyframes rise  { from{opacity:0;transform:translateY(24px) scale(.985)} to{opacity:1;transform:translateY(0) scale(1)} }
     @keyframes spin  { to{transform:rotate(360deg)} }
     @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
-
     @media (max-width:560px) {
       .card { padding:24px;border-radius:26px; }
       .footer { flex-direction:column;align-items:flex-start;gap:6px; }
     }
-
-    /* ── Close button ────────────────────────────── */
     .close-btn {
-      position: fixed;
-      top: 20px; right: 20px;
-      z-index: 50;
-      width: 38px; height: 38px;
-      border-radius: 50%;
-      border: 1px solid var(--stroke);
-      background: var(--card);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      color: var(--muted);
-      font-size: 1.1rem;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-      transition: transform .15s, background .15s, color .15s;
-      animation: fadeIn .5s ease both;
+      position:fixed;top:20px;right:20px;z-index:50;width:38px;height:38px;border-radius:50%;
+      border:1px solid var(--stroke);background:var(--card);backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);color:var(--muted);font-size:1.1rem;
+      display:flex;align-items:center;justify-content:center;cursor:pointer;
+      box-shadow:0 4px 16px rgba(0,0,0,0.12);transition:transform .15s, background .15s, color .15s;
+      animation:fadeIn .5s ease both;
     }
-    .close-btn:hover {
-      transform: scale(1.1);
-      background: var(--panel);
-      color: var(--text);
-    }
-    .close-btn:active { transform: scale(0.95); }
-
-    /* Toast fallback */
+    .close-btn:hover { transform:scale(1.1);background:var(--panel);color:var(--text); }
+    .close-btn:active { transform:scale(0.95); }
     .toast {
-      position: fixed;
-      bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px);
-      z-index: 60;
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      color: var(--text);
-      font-size: 0.88rem;
-      font-weight: 500;
-      padding: 12px 20px;
-      border-radius: 100px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .3s ease, transform .3s ease;
-      white-space: nowrap;
+      position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(20px);z-index:60;
+      background:var(--card);border:1px solid var(--stroke);backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);color:var(--text);font-size:0.88rem;font-weight:500;
+      padding:12px 20px;border-radius:100px;box-shadow:0 8px 24px rgba(0,0,0,0.18);
+      opacity:0;pointer-events:none;transition:opacity .3s ease, transform .3s ease;white-space:nowrap;
     }
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to   { opacity: 1; transform: scale(1); }
-    }
+    .toast.show { opacity:1;transform:translateX(-50%) translateY(0); }
+    @keyframes fadeIn { from{opacity:0;transform:scale(0.8)} to{opacity:1;transform:scale(1)} }
   </style>
 </head>
 <body>
 
-  <!-- Close button -->
   <button class="close-btn" onclick="closePage()" aria-label="Chiudi">✕</button>
   <div class="toast" id="toast">Chiudi manualmente questa scheda 👆</div>
 
@@ -319,13 +177,11 @@
           <span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
       </div>
-
       <div class="hero">
         <div class="eyebrow">Un pensiero personale</div>
         <h1>Ho lasciato un messaggio per te.</h1>
         <p class="subtitle">Inserisci il tuo nome e aprirò il ringraziamento che ho preparato apposta per te.</p>
       </div>
-
       <div class="panel">
         <label class="label" for="nome">Il tuo nome</label>
         <div class="field">
@@ -339,52 +195,67 @@
           <button onclick="vai()">Apri il tuo messaggio</button>
           <div class="hint">Usa lo stesso nome salvato nella lista dei link.</div>
         </div>
-        <div class="error" id="errore">Nome non trovato. Controlla di averlo scritto correttamente.</div>
+        <div class="error" id="errore"></div>
       </div>
-
       <div class="footer">
         <div><strong>Leo Brogna</strong> · Laurea Magistrale 2026</div>
         <div>Ringraziamenti personalizzati</div>
       </div>
     </section>
   </main>
+
   <script>
-    // =============================================
-    // MODIFICA QUI: nomi in minuscolo → link
-    // =============================================
     const links = {
-      	"san francesco":"https://bronx-l.github.io/Ringraziamenti/f0e702e4-d26e3481.jpg",
-      	"carlo":         "https://bronx-l.github.io/Ringraziamenti/uomo_grazie.html",
-  	"uomo":          "https://bronx-l.github.io/Ringraziamenti/uomo_grazie.html",
-  	"maestro":       "https://bronx-l.github.io/Ringraziamenti/uomo_grazie.html",
-	"antonio":	"https://bronx-l.github.io/Ringraziamenti/compa_grazie.html",
-	"compare":	"https://bronx-l.github.io/Ringraziamenti/compa_grazie.html"
-	
+      "san francesco": "https://bronx-l.github.io/Ringraziamenti/f0e702e4-d26e3481.jpg",
+      "carlo":         "https://bronx-l.github.io/Ringraziamenti/uomo_grazie.html",
+      "uomo":          "https://bronx-l.github.io/Ringraziamenti/uomo_grazie.html",
+      "maestro":       "https://bronx-l.github.io/Ringraziamenti/uomo_grazie.html",
+      "antonio":       "https://bronx-l.github.io/Ringraziamenti/compa_grazie.html",
+      "compare":       "https://bronx-l.github.io/Ringraziamenti/compa_grazie.html",
+      "stefania":      "https://bronx-l.github.io/Ringraziamenti/storda_ministeriale.html",
+      "ninja":         "https://bronx-l.github.io/Ringraziamenti/grazie_ciclismo.html",
+      "pelleninja":    "https://bronx-l.github.io/Ringraziamenti/grazie_ciclismo.html",
+      "michela":       "https://bronx-l.github.io/Ringraziamenti/vaff_grazie.html",
+      "sara":          "https://bronx-l.github.io/Ringraziamenti/grazie_amica.html",
+      "franco":        "https://bronx-l.github.io/Ringraziamenti/grazie_mario.html",
+      "antonio jr":    "https://bronx-l.github.io/Ringraziamenti/grazie_mario.html",
+      "luigi":         "https://bronx-l.github.io/Ringraziamenti/luigi.html",
+      "ciccio":        "https://bronx-l.github.io/Ringraziamenti/ciccio.html",
+      "cicciotto":     "https://bronx-l.github.io/Ringraziamenti/ciccio.html",
+      "pellegrino":    "https://bronx-l.github.io/Ringraziamenti/ciccio.html",
+      "pietro":        "https://bronx-l.github.io/Ringraziamenti/grazie_agricolo.html"
     };
-    // =============================================
+
+    const FALLBACK = "https://bronx-l.github.io/Ringraziamenti/grazie_animato.html";
+
+    function showError(msg) {
+      const el = document.getElementById('errore');
+      el.textContent = msg;
+      el.style.display = 'block';
+      el.style.animation = 'none';
+      void el.offsetWidth;
+      el.style.animation = 'shake .36s ease';
+    }
 
     function vai() {
       const input   = document.getElementById('nome').value.trim().toLowerCase();
       const errore  = document.getElementById('errore');
       const overlay = document.getElementById('overlay');
       errore.style.display = 'none';
-      if (links[input]) {
-        overlay.classList.add('show');
-        setTimeout(() => { window.location.href = links[input]; }, 700);
-      } else {
-        errore.style.display = 'block';
-        errore.style.animation = 'none';
-        void errore.offsetWidth;
-        errore.style.animation = 'shake .36s ease';
-      }
-    }
-  
 
-    // ── Close button ─────────────────────────────
+      // campo vuoto
+      if (!input) {
+        showError('⚠️ Inserisci il tuo nome prima di continuare.');
+        return;
+      }
+
+      const dest = links[input] || FALLBACK;
+      overlay.classList.add('show');
+      setTimeout(() => { window.location.href = dest; }, 700);
+    }
+
     function closePage() {
       window.close();
-      // Fallback: if window.close() didn't work (most mobile browsers),
-      // show a toast after 300ms
       setTimeout(function () {
         if (!document.hidden) {
           const toast = document.getElementById('toast');
@@ -393,7 +264,6 @@
         }
       }, 300);
     }
-  
   </script>
 </body>
 </html>
