@@ -105,11 +105,6 @@
       font-size:0.88rem;line-height:1.45;color:var(--error-text);
       background:var(--error-bg);box-shadow:inset 0 0 0 1px var(--error-ring);
     }
-    .footer {
-      position:relative;display:flex;justify-content:space-between;
-      align-items:center;margin-top:22px;color:var(--footer);font-size:0.82rem;
-    }
-    .footer strong { font-weight:600;color:var(--text); }
     .overlay {
       position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
       background:var(--overlay-bg);backdrop-filter:blur(20px) saturate(140%);
@@ -130,7 +125,6 @@
     @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
     @media (max-width:560px) {
       .card { padding:24px;border-radius:26px; }
-      .footer { flex-direction:column;align-items:flex-start;gap:6px; }
     }
     .close-btn {
       position:fixed;top:20px;right:20px;z-index:50;width:38px;height:38px;border-radius:50%;
@@ -193,7 +187,7 @@
         </div>
         <div class="button-wrap">
           <button onclick="vai()">Apri il tuo messaggio</button>
-                  </div>
+        </div>
         <div class="error" id="errore"></div>
       </div>
     </section>
@@ -233,12 +227,11 @@
     }
 
     function vai() {
-      const input   = document.getElementById('nome').value.trim().toLowerCase();
-      const errore  = document.getElementById('errore');
+      const input  = document.getElementById('nome').value.trim().toLowerCase();
+      const errore = document.getElementById('errore');
       const overlay = document.getElementById('overlay');
       errore.style.display = 'none';
 
-      // campo vuoto
       if (!input) {
         showError('⚠️ Inserisci il tuo nome prima di continuare.');
         return;
@@ -259,6 +252,13 @@
         }
       }, 300);
     }
+
+    // Resetta overlay quando si torna indietro
+    window.addEventListener('pageshow', function() {
+      document.getElementById('overlay').classList.remove('show');
+      document.getElementById('nome').value = '';
+      document.getElementById('errore').style.display = 'none';
+    });
   </script>
 </body>
 </html>
