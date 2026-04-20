@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grazie<br/>Masto</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root { --soil: #5d3a1a; --bg1: #e8d5a3; --bg2: #c8a96e; }
+
+    html, body {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, var(--bg1), var(--bg2));
+      overflow: hidden;
+    }
+
+    .wrap {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 16px;
+    }
+
+    .tractor {
+      font-size: clamp(48px, 14vw, 80px);
+      animation: drive 2.6s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+      filter: drop-shadow(0 4px 16px rgba(93,58,26,0.3));
+    }
+
+    @keyframes drive {
+      0%   { transform: translateX(-40px); opacity: 0; }
+      8%   { opacity: 1; }
+      45%  { transform: translateX(0px); }
+      70%  { transform: translateX(0px); opacity: 1; }
+      88%  { transform: translateX(40px); opacity: 0; }
+      100% { transform: translateX(-40px); opacity: 0; }
+    }
+
+    .grazie {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(80px, 22vw, 140px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: transparent;
+      background: linear-gradient(90deg, var(--soil) 50%, transparent 50%);
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-stroke: 2px var(--soil);
+      animation: fill 2.6s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+      filter: drop-shadow(0 3px 10px rgba(93,58,26,0.2));
+    }
+
+    @keyframes fill {
+      0%   { background-position: 100% 0; opacity: 0.15; }
+      8%   { opacity: 1; }
+      52%  { background-position: 0% 0; }
+      70%  { background-position: 0% 0; opacity: 1; }
+      86%  { opacity: 0; }
+      100% { background-position: 100% 0; opacity: 0; }
+    }
+
+    .heart-wrap {
+      display: flex; align-items: center; justify-content: center;
+      animation: heartbeat 2.6s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+    }
+    .heart-svg {
+      width: clamp(32px, 9vw, 52px); height: auto;
+      filter: drop-shadow(0 4px 10px rgba(192,57,43,0.4));
+    }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(0.4);  opacity: 0; }
+      10%     { transform: scale(1.2);  opacity: 1; }
+      20%     { transform: scale(0.95); }
+      30%     { transform: scale(1.1);  }
+      55%     { transform: scale(1);    opacity: 1; }
+      78%     { transform: scale(1);    opacity: 1; }
+      92%     { transform: scale(0.5);  opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tractor">🚜</div>
+    <span class="grazie">Grazie<br/>Masto</span>
+    <div class="heart-wrap">
+      <svg class="heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#c0392b" d="M50 85 C50 85,5 52,5 28 C5 12,17 2,30 2 C40 2,48 9,50 14 C52 9,60 2,70 2 C83 2,95 12,95 28 C95 52,50 85,50 85 Z"/>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

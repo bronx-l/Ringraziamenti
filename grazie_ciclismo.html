@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grazie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(180deg, #d4eaff 0%, #f0f8ff 55%, #e8e0d0 100%);
+      overflow: hidden;
+    }
+
+    /* Montagne sfondo */
+    .mountains {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 55%; z-index: 0; pointer-events: none;
+    }
+    .mountain {
+      position: absolute; bottom: 0;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+    .m1 { width:55%;height:90%;left:-8%;background:#b0c4de; }
+    .m2 { width:45%;height:72%;left:20%;background:#c5d8e8; }
+    .m3 { width:50%;height:80%;right:-5%;background:#a8bfd4; }
+
+    /* Strada */
+    .road {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 52px; z-index: 1;
+      background: #5a5a5a;
+      border-top: 4px solid #888;
+    }
+    .road::after {
+      content: '';
+      position: absolute; top: 50%; left: 0; right: 0;
+      height: 4px; margin-top: -2px;
+      background: repeating-linear-gradient(
+        90deg, #fff 0px, #fff 40px, transparent 40px, transparent 80px
+      );
+      animation: roadMove 0.6s linear infinite;
+    }
+    @keyframes roadMove {
+      from { background-position: 0 0; }
+      to   { background-position: 80px 0; }
+    }
+
+    /* Ciclista */
+    .cyclist {
+      position: fixed;
+      bottom: 52px; left: 50%;
+      transform: translateX(-50%);
+      font-size: clamp(40px, 12vw, 68px);
+      z-index: 3;
+      animation: ride 2.6s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+    }
+
+    @keyframes ride {
+      0%   { transform: translateX(-80px); opacity: 0; }
+      8%   { opacity: 1; }
+      45%  { transform: translateX(0px); }
+      68%  { transform: translateX(0px); opacity: 1; }
+      85%  { transform: translateX(80px); opacity: 0; }
+      100% { transform: translateX(-80px); opacity: 0; }
+    }
+
+    /* Linea del traguardo */
+    .finish {
+      position: fixed;
+      bottom: 0; right: 18%;
+      width: 8px; height: 80px;
+      z-index: 2;
+      background: repeating-linear-gradient(
+        180deg,
+        #111 0px, #111 10px,
+        #fff 10px, #fff 20px
+      );
+      animation: finishFade 2.6s ease 0.2s infinite;
+    }
+    @keyframes finishFade {
+      0%,8%  { opacity: 0; }
+      20%    { opacity: 1; }
+      70%    { opacity: 1; }
+      88%    { opacity: 0; }
+      100%   { opacity: 0; }
+    }
+
+    /* Wrap centrale */
+    .wrap {
+      position: relative; z-index: 4;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 10px;
+      margin-bottom: 70px;
+    }
+
+    /* Numero pettorale */
+    .bib {
+      background: #e53935;
+      color: white;
+      font-family: 'Barlow Condensed', Arial, sans-serif;
+      font-size: clamp(11px, 3vw, 15px);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      padding: 5px 16px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(229,57,53,0.35);
+      animation: bibFade 2.6s ease 0.2s infinite;
+    }
+    @keyframes bibFade {
+      0%,8%  { opacity:0; transform:translateY(-6px); }
+      18%    { opacity:1; transform:translateY(0); }
+      70%    { opacity:1; }
+      86%    { opacity:0; }
+      100%   { opacity:0; }
+    }
+
+    /* Scritta GRAZIE */
+    .grazie {
+      font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif;
+      font-size: clamp(76px, 22vw, 144px);
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      line-height: 1;
+      color: transparent;
+      background: linear-gradient(90deg, #1a237e 50%, transparent 50%);
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-stroke: 2.5px #1a237e;
+      animation: fill 2.6s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+      filter: drop-shadow(0 4px 16px rgba(26,35,126,0.18));
+    }
+
+    @keyframes fill {
+      0%   { background-position: 100% 0; opacity: 0.15; }
+      8%   { opacity: 1; }
+      50%  { background-position: 0% 0; }
+      70%  { background-position: 0% 0; opacity: 1; }
+      86%  { opacity: 0; }
+      100% { background-position: 100% 0; opacity: 0; }
+    }
+
+    /* Cuore */
+    .heart-wrap {
+      animation: heartbeat 2.6s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+    }
+    .heart-svg {
+      width: clamp(28px, 8vw, 46px); height: auto;
+      filter: drop-shadow(0 3px 8px rgba(229,57,53,0.45));
+    }
+    @keyframes heartbeat {
+      0%,100% { transform: scale(0.4);  opacity: 0; }
+      10%     { transform: scale(1.2);  opacity: 1; }
+      20%     { transform: scale(0.95); }
+      30%     { transform: scale(1.1);  }
+      55%     { transform: scale(1);    opacity: 1; }
+      78%     { transform: scale(1);    opacity: 1; }
+      92%     { transform: scale(0.5);  opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mountains">
+    <div class="mountain m1"></div>
+    <div class="mountain m2"></div>
+    <div class="mountain m3"></div>
+  </div>
+
+  <div class="road"></div>
+  <div class="finish"></div>
+  <div class="cyclist">🚴</div>
+
+  <div class="wrap">
+    <div class="bib">🏆 TAPPA FINALE</div>
+    <span class="grazie">GRAZIE</span>
+    <div class="heart-wrap">
+      <svg class="heart-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+        <path fill="#e53935" d="M50 85 C50 85,5 52,5 28 C5 12,17 2,30 2 C40 2,48 9,50 14 C52 9,60 2,70 2 C83 2,95 12,95 28 C95 52,50 85,50 85 Z"/>
+      </svg>
+    </div>
+  </div>
+
+</body>
+</html>

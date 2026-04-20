@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grazie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+
+    body {
+      background: #2a0a14;
+      transition: background 1s ease;
+    }
+    body.soft { background: linear-gradient(160deg, #f9eef1, #f0d8e0); }
+
+    /* ── STILE CONDIVISO testo fase 1 ── */
+    .big-txt {
+      font-family: 'Bebas Neue', Impact, sans-serif;
+      font-size: clamp(48px, 14vw, 100px);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      color: transparent;
+      background: linear-gradient(90deg, #c2185b 50%, transparent 50%);
+      background-size: 200% 100%;
+      background-position: 0% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-stroke: 2px #c2185b;
+      filter: drop-shadow(0 0 24px rgba(194,24,91,0.55));
+      text-align: center;
+    }
+
+    /* Emoji rabbia */
+    .rage {
+      font-size: clamp(22px, 6vw, 36px);
+      text-align: center;
+      animation: popIn .5s cubic-bezier(.2,.9,.2,1) both;
+    }
+
+    /* Vaffanculo: si riempie */
+    .vaff {
+      animation: fillIn .8s cubic-bezier(.4,0,.2,1) .1s both,
+                 shake .35s ease 1.2s 3;
+    }
+    @keyframes fillIn {
+      from { background-position: 100% 0; opacity: .15; }
+      to   { background-position:   0% 0; opacity: 1; }
+    }
+    @keyframes shake {
+      0%,100%{ transform: translateX(0); }
+      25%    { transform: translateX(-8px) rotate(-1deg); }
+      75%    { transform: translateX(8px)  rotate(1deg); }
+    }
+
+    /* Linee sequenziali: stessa dim, appaiono dal basso */
+    .seq {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .4s ease, transform .4s ease;
+    }
+    .seq.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Fadeout fase 1 */
+    .fase1 {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fase1.out {
+      opacity: 0;
+      transform: scale(1.15);
+      pointer-events: none;
+    }
+
+    /* ── FASE 2: petali + grazie ── */
+    .petal {
+      position: fixed; z-index: 0; pointer-events: none;
+      font-size: clamp(14px,3vw,22px);
+      opacity: 0; transition: opacity 1s ease;
+      animation: petalFall linear infinite;
+    }
+    .p1{left:8%;animation-duration:6s;animation-delay:0s}
+    .p2{left:22%;animation-duration:7.5s;animation-delay:-2s}
+    .p3{left:38%;animation-duration:5.5s;animation-delay:-4s}
+    .p4{left:55%;animation-duration:8s;animation-delay:-1s}
+    .p5{left:70%;animation-duration:6.5s;animation-delay:-3.5s}
+    .p6{left:85%;animation-duration:7s;animation-delay:-5s}
+
+    @keyframes petalFall {
+      0%  { transform:translateY(-40px) rotate(0deg);   opacity:0; }
+      10% { opacity:.8; }
+      90% { opacity:.5; }
+      100%{ transform:translateY(110vh) rotate(360deg); opacity:0; }
+    }
+
+    .fase2 {
+      position: absolute;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 12px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .8s ease;
+      z-index: 2;
+    }
+    .fase2.show { opacity: 1; pointer-events: all; }
+
+    .hearts { display:flex; gap:8px; animation: heartsIn 2.6s ease infinite; }
+    .ht { font-size:clamp(16px,4vw,24px); }
+    .ht:nth-child(2){ font-size:clamp(22px,6vw,32px); }
+    @keyframes heartsIn {
+      0%,8%{opacity:0;transform:translateY(-8px) scale(.7)}
+      20%{opacity:1;transform:translateY(0) scale(1)}
+      70%{opacity:1} 86%{opacity:0} 100%{opacity:0}
+    }
+
+    .grazie {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+      font-size: clamp(74px,21vw,138px);
+      font-weight: 700; line-height: 1;
+      color: transparent;
+      background: linear-gradient(90deg, #d4607a 50%, transparent 50%);
+      background-size: 200% 100%; background-position: 100% 0;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-stroke: 1.8px #d4607a;
+      filter: drop-shadow(0 4px 18px rgba(212,96,122,0.22));
+      animation: fillGrazie 2.6s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    @keyframes fillGrazie {
+      0%{background-position:100% 0;opacity:.15}
+      8%{opacity:1} 52%{background-position:0% 0}
+      70%{background-position:0% 0;opacity:1}
+      86%{opacity:0} 100%{background-position:100% 0;opacity:0}
+    }
+
+    .flower {
+      font-size:clamp(28px,8vw,42px);
+      animation: bloom 2.6s cubic-bezier(.4,0,.2,1) infinite;
+    }
+    @keyframes bloom {
+      0%,100%{transform:scale(.3) rotate(-30deg);opacity:0}
+      12%{transform:scale(1.15) rotate(5deg);opacity:1}
+      22%{transform:scale(1) rotate(0)}
+      65%{opacity:1} 82%{opacity:0}
+    }
+
+    @keyframes popIn {
+      from{opacity:0;transform:scale(.6)} to{opacity:1;transform:scale(1)}
+    }
+  </style>
+</head>
+<body>
+
+  <span class="petal p1">🌸</span>
+  <span class="petal p2">🌷</span>
+  <span class="petal p3">🌸</span>
+  <span class="petal p4">🌺</span>
+  <span class="petal p5">🌷</span>
+  <span class="petal p6">🌸</span>
+
+  <!-- FASE 1 -->
+  <div class="fase1" id="fase1">
+    <div class="rage">💔😠💔</div>
+    <div class="big-txt vaff">VAFFANCULO</div>
+    <div class="big-txt seq" id="seq1">MA NO JA</div>
+    <div class="big-txt seq" id="seq2">ASPETTA</div>
+  </div>
+
+  <!-- FASE 2 -->
+  <div class="fase2" id="fase2">
+    <div class="hearts">
+      <span class="ht">🤍</span>
+      <span class="ht">🩷</span>
+      <span class="ht">🤍</span>
+    </div>
+    <span class="grazie">Grazie 😘</span>
+    <span class="flower">🌷</span>
+  </div>
+
+  <script>
+    const fase1 = document.getElementById('fase1');
+    const fase2 = document.getElementById('fase2');
+    const seq1  = document.getElementById('seq1');
+    const seq2  = document.getElementById('seq2');
+    const petals = document.querySelectorAll('.petal');
+
+    // t=2s → "MA NO JA"
+    setTimeout(() => seq1.classList.add('show'), 2000);
+
+    // t=3.2s → "ASPETTA"
+    setTimeout(() => seq2.classList.add('show'), 3200);
+
+    // t=4.6s → transizione
+    setTimeout(() => {
+      fase1.classList.add('out');
+      setTimeout(() => {
+        document.body.classList.add('soft');
+        petals.forEach(p => p.style.opacity = '1');
+        fase2.classList.add('show');
+      }, 600);
+    }, 4600);
+  </script>
+</body>
+</html>

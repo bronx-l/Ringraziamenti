@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Storda</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: #f4f1eb;
+      overflow: hidden;
+    }
+
+    /* Texture carta */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        repeating-linear-gradient(0deg,   rgba(0,0,0,0.015) 0px, transparent 1px),
+        repeating-linear-gradient(90deg,  rgba(0,0,0,0.015) 0px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* Bordo ornamentale */
+    .frame {
+      position: fixed; inset: 16px; z-index: 0;
+      border: 2px solid #1a2a4a;
+      pointer-events: none;
+    }
+    .frame::before {
+      content: '';
+      position: absolute; inset: 5px;
+      border: 1px solid rgba(26,42,74,0.35);
+    }
+
+    /* Angoli decorativi */
+    .corner {
+      position: fixed; z-index: 1;
+      font-size: 22px; color: #1a2a4a;
+      opacity: 0.55; pointer-events: none;
+      line-height: 1;
+    }
+    .tl { top: 22px;  left:  22px; }
+    .tr { top: 22px;  right: 22px; transform: scaleX(-1); }
+    .bl { bottom: 22px; left:  22px; transform: scaleY(-1); }
+    .br { bottom: 22px; right: 22px; transform: scale(-1,-1); }
+
+    /* Stemma */
+    .stemma {
+      font-size: clamp(42px, 12vw, 70px);
+      animation: stampIn 2.8s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+      filter: drop-shadow(0 3px 10px rgba(26,42,74,0.25));
+    }
+
+    @keyframes stampIn {
+      0%    { transform: scale(1.4) rotate(-4deg); opacity: 0; filter: blur(4px); }
+      12%   { transform: scale(1) rotate(0deg);    opacity: 1; filter: blur(0); }
+      65%   { transform: scale(1) rotate(0deg);    opacity: 1; }
+      82%   { transform: scale(0.9);               opacity: 0; }
+      100%  { transform: scale(1.4);               opacity: 0; }
+    }
+
+    /* Header istituzionale */
+    .header-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(8px, 2vw, 11px);
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #1a2a4a;
+      opacity: 0.7;
+      text-align: center;
+      animation: lineFade 2.8s ease 0.2s infinite;
+    }
+
+    @keyframes lineFade {
+      0%,10%  { opacity: 0; transform: translateY(-4px); }
+      22%     { opacity: 0.7; transform: translateY(0); }
+      68%     { opacity: 0.7; }
+      84%     { opacity: 0; }
+      100%    { opacity: 0; }
+    }
+
+    /* Linea divisore */
+    .divider-line {
+      width: clamp(160px, 45vw, 280px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #1a2a4a, transparent);
+      animation: lineFade 2.8s ease 0.2s infinite;
+    }
+
+    /* Scritta principale */
+    .grazie {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(68px, 19vw, 128px);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      color: transparent;
+      background: linear-gradient(90deg, #1a2a4a 50%, transparent 50%);
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-stroke: 1.8px #1a2a4a;
+      animation: fill 2.8s cubic-bezier(.4,0,.2,1) 0.2s infinite;
+    }
+
+    @keyframes fill {
+      0%   { background-position: 100% 0; opacity: 0.12; }
+      10%  { opacity: 1; }
+      52%  { background-position: 0% 0; }
+      68%  { background-position: 0% 0; opacity: 1; }
+      84%  { opacity: 0; }
+      100% { background-position: 100% 0; opacity: 0; }
+    }
+
+    /* Protocollo numero */
+    .protocol {
+      font-family: 'Inter', monospace;
+      font-size: clamp(9px, 2.2vw, 12px);
+      letter-spacing: 0.18em;
+      color: rgba(26,42,74,0.55);
+      text-align: center;
+      animation: lineFade 2.8s ease 0.2s infinite;
+    }
+
+    /* Timbro */
+    .stamp {
+      position: fixed;
+      bottom: 48px; right: 52px;
+      z-index: 2;
+      width: clamp(64px, 15vw, 92px);
+      height: clamp(64px, 15vw, 92px);
+      border: 3px solid rgba(180,30,30,0.55);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transform: rotate(-18deg);
+      animation: stampAppear 2.8s ease 0.2s infinite;
+    }
+    .stamp::before {
+      content: '';
+      position: absolute; inset: 4px;
+      border: 1px solid rgba(180,30,30,0.35);
+      border-radius: 50%;
+    }
+    .stamp-text {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(6px, 1.5vw, 8px);
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(180,30,30,0.7);
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+
+    @keyframes stampAppear {
+      0%,30%  { opacity: 0; transform: rotate(-18deg) scale(1.3); }
+      45%     { opacity: 1; transform: rotate(-18deg) scale(1); }
+      70%     { opacity: 1; }
+      85%     { opacity: 0; }
+      100%    { opacity: 0; }
+    }
+
+    /* Wrap centrale */
+    .wrap {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 14px;
+    }
+    .foto-placeholder span:first-child { font-size: 1.8rem; }
+  </style>
+</head>
+<body>
+
+  <div class="frame"></div>
+  <span class="corner tl">❧</span>
+  <span class="corner tr">❧</span>
+  <span class="corner bl">❧</span>
+  <span class="corner br">❧</span>
+
+  <div class="stamp">
+    <span class="stamp-text">VISTO<br/>E<br/>APPROVATO</span>
+  </div>
+
+  <div class="wrap">
+    <div class="stemma">🏛️</div>
+    <div class="header-text">Repubblica Italiana</div>
+    <div class="divider-line"></div>
+    <span class="grazie">Storda</span>
+    <div class="divider-line"></div>
+    <div class="protocol">Prot. N. 2026/TESI/001</div>
+  </div>
+
+</body>
+</html>
